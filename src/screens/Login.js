@@ -6,16 +6,18 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, ImageBackground } from 'react-native';
+import { View, TextInput, StyleSheet, ImageBackground } from 'react-native';
+import {Text,Button} from 'native-base'
 export default function Login() {
 
-    function addUser(){
-        if(email && password){
+    function addUser() {
+        if (email && password) {
+            alert('User added Successfully!');
             setEmail('');
             setPassword('');
-            alert('User added Successfully!');
+
         }
-        else{
+        else {
             alert('Please Enter Password And Email both');
         }
     }
@@ -28,12 +30,13 @@ export default function Login() {
             <View >
                 <View >
                     <Text style={{ fontSize: 25, fontWeight: 'bold', textAlign: 'center', color: 'pink' }}>LogIn Screen</Text>
-                    <TextInput placeholder="Enter UserName" value={email} onChangeText={(e) => setEmail(e)} style={style.input} ></TextInput>
+                    <TextInput autoFocus={true} blurOnSubmit={true} placeholder="Enter UserName" value={email} onChangeText={(e) => setEmail(e)} style={style.input} ></TextInput>
 
                     <TextInput placeholder="Enter Password" secureTextEntry={true} value={password} onChangeText={(e) => setPassword(e)} style={style.input} ></TextInput>
                 </View>
                 <View style={style.butt}>
-                    <Button title='LogIn' onPress={() => addUser()} />
+                    {/* <Button title='LogIn' onPress={() => addUser()} /> */}
+                    <Button primary onPress={() => addUser()} style={{marginLeft:38,justifyContent:'center',width:'80%'}}><Text style={{fontWeight:'bold',fontSize:16}}> LogIn </Text></Button>
 
                 </View>
                 <Text style={{ fontSize: 16, marginTop: 10, textAlign: 'center', fontWeight: 'bold', color: 'pink' }}>Don't Have An Account? SignUp Here</Text>
@@ -52,6 +55,8 @@ const style = StyleSheet.create({
         borderRadius: 10,
         borderBottomColor: 'black',
         borderWidth: 3,
+        fontSize:16,
+        fontWeight:'bold',
 
     },
     butt: {

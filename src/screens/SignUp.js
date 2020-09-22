@@ -9,7 +9,8 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable prettier/prettier */
 import React,{useState} from 'react';
-import { View, Text, TextInput ,StyleSheet,Button,ImageBackground} from 'react-native';
+import {Button,Text} from 'native-base';
+import { View,  TextInput ,StyleSheet,ImageBackground} from 'react-native';
 // import { Button } from 'react-bootstrap';
 import Login from './Login';
 export default function SignUp({navigation}) {
@@ -36,11 +37,12 @@ export default function SignUp({navigation}) {
         <Text style={{fontWeight:'bold',fontSize:25,textAlign:'center',color:'pink'}}>SignUp Screen</Text>    
             <View >
                 <TextInput placeholder="Enter UserName" autoFocus={true} blurOnSubmit={true} value={username} onChangeText={(e) => setUsername(e)} style={style.input} ></TextInput>
-                <TextInput placeholder="Enter Email"  autoFocus={true} blurOnSubmit={true} value={email} onChangeText={(e) => setEmail(e)} style={style.input}></TextInput>
-                <TextInput placeholder="Enter Password" autoFocus={true} blurOnSubmit={true} secureTextEntry={true} value={password} onChangeText={(e) => setPassword(e) } style={style.input}></TextInput>
+                <TextInput placeholder="Enter Email"   blurOnSubmit={true} value={email} onChangeText={(e) => setEmail(e)} style={style.input}></TextInput>
+                <TextInput placeholder="Enter Password"  blurOnSubmit={true} secureTextEntry={true} value={password} onChangeText={(e) => setPassword(e) } style={style.input}></TextInput>
             </View>
-            <View style={style.butt}>
-                <Button title='SignUp' onPress={() => signUpUser()}></Button>
+            <View >
+                {/* <Button title='SignUp' onPress={() => signUpUser()}></Button> */}
+                <Button primary onPress={() => signUpUser()} style={{marginLeft:38,justifyContent:'center',width:'80%'}}><Text style={{fontWeight:'bold',fontSize:16}}> SignUp </Text></Button>
 
             </View>
             <Text style={{fontSize:16,marginTop:10,textAlign:'center',fontWeight:'bold',color:'pink'}} onPress={() =>navigation.navigate('Login') }>Don't Have An Account? Login Here</Text>
@@ -59,6 +61,8 @@ const style = StyleSheet.create({
         borderRadius:10,
         borderBottomColor:'red',
         borderWidth:3,
+        fontSize:16,
+        fontWeight:'bold',
 
     },
     butt:{
