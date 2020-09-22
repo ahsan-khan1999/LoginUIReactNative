@@ -42,7 +42,7 @@ export default function SignUp({navigation}) {
             </View>
             <View >
                 {/* <Button title='SignUp' onPress={() => signUpUser()}></Button> */}
-                <Button primary onPress={() => signUpUser()} style={{marginLeft:38,justifyContent:'center',width:'80%'}}><Text style={{fontWeight:'bold',fontSize:16}}> SignUp </Text></Button>
+                <Button primary onPress={() => signUpUser()} style={{borderRadius:30,marginLeft:38,justifyContent:'center',width:'80%',marginTop: 10,}}><Text style={{fontWeight:'bold',fontSize:16}}> SignUp </Text></Button>
 
             </View>
             <Text style={{fontSize:16,marginTop:10,textAlign:'center',fontWeight:'bold',color:'pink'}} onPress={() =>navigation.navigate('Login') }>Don't Have An Account? Login Here</Text>

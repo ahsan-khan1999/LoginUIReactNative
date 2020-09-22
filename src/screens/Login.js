@@ -8,7 +8,8 @@
 import React, { useState } from 'react';
 import { View, TextInput, StyleSheet, ImageBackground } from 'react-native';
 import {Text,Button} from 'native-base'
-export default function Login() {
+import SignUp from './SignUp'
+export default function Login({navigation}) {
 
     function addUser() {
         if (email && password) {
@@ -36,10 +37,10 @@ export default function Login() {
                 </View>
                 <View style={style.butt}>
                     {/* <Button title='LogIn' onPress={() => addUser()} /> */}
-                    <Button primary onPress={() => addUser()} style={{marginLeft:38,justifyContent:'center',width:'80%'}}><Text style={{fontWeight:'bold',fontSize:16}}> LogIn </Text></Button>
+                    <Button primary onPress={() => addUser()} style={{marginLeft:38,justifyContent:'center',width:'80%',borderRadius:30}}><Text style={{fontWeight:'bold',fontSize:16}}> LogIn </Text></Button>
 
                 </View>
-                <Text style={{ fontSize: 16, marginTop: 10, textAlign: 'center', fontWeight: 'bold', color: 'pink' }}>Don't Have An Account? SignUp Here</Text>
+                <Text style={{ fontSize: 16, marginTop: 10, textAlign: 'center', fontWeight: 'bold', color: 'pink' }} onPress={() => navigation.navigate('SignUp')}>Don't Have An Account? SignUp Here</Text>
             </View>
         </ImageBackground>
     );
