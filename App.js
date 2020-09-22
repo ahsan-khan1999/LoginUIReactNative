@@ -17,7 +17,7 @@ import React from 'react';
 import { View, Text, ImageBackground, StyleSheet } from 'react-native';
 import Login from './src/screens/Login';
 import SignUp from './src/screens/SignUp';
-
+import Home from './src/screens/Home'
 const Stack = createStackNavigator();
 const App = () => {
 
@@ -34,6 +34,7 @@ const App = () => {
         />
 
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Home" component={Home} />
 
       </Stack.Navigator>
 

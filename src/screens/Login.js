@@ -9,6 +9,7 @@ import React, { useState } from 'react';
 import { View, TextInput, StyleSheet, ImageBackground } from 'react-native';
 import {Text,Button} from 'native-base'
 import SignUp from './SignUp'
+import Home from './Home'
 export default function Login({navigation}) {
 
     function addUser() {
@@ -16,6 +17,7 @@ export default function Login({navigation}) {
             alert('User added Successfully!');
             setEmail('');
             setPassword('');
+            navigation.navigate('Home');
 
         }
         else {
