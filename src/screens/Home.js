@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 /* eslint-disable no-shadow */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable semi */
@@ -13,6 +14,7 @@ import { GlobalData } from '../Components/FetchData';
 import { Content, Card, CardItem, Text, Body, View, Container } from "native-base";
 import StyleSheet from 'react-native';
 import CountryPicker from '../Components/CountryPicker';
+import AnimateNumber from 'react-native-countup'
 const Home = () => {
     const [country, setCountry] = useState('');
     const [cases, setCases] = useState({});
@@ -42,21 +44,22 @@ const Home = () => {
                 <Card>
 
 
-                    <CardItem style={{ backgroundColor: 'pink', borderBottomColor: 'red', borderBottomWidth: 5 }}>
-                        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Total Deaths</Text>
-                        <Text style={{ marginLeft: 185, fontSize: 20, fontWeight: 'bold', marginBottom: 5 }}>{Object.values(cases)[0]}</Text>
+                    <CardItem style={{ height: 80, backgroundColor: 'pink', borderBottomColor: 'red', borderBottomWidth: 5, display: 'flex' }}>
+                        <Text style={{ fontSize: 25, fontWeight: 'bold', justifyContent: 'center' }}>Total Deaths           ~{"         "}</Text>
+
+                        <AnimateNumber initial={0} value={Object.values(cases)[0]} timing="easeIn" style={{ fontSize: 25, fontWeight: 'bold', marginBottom: 5 }} />
 
 
                     </CardItem>
-                    <CardItem style={{ backgroundColor: 'grey', borderBottomColor: 'orange', borderBottomWidth: 5 }}>
-                        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Confirmed Case</Text>
-                        <Text style={{ marginLeft: 130, fontSize: 20, fontWeight: 'bold', marginBottom: 5 }}>{Object.values(cases)[2]}</Text>
+                    <CardItem style={{ height: 80, backgroundColor: 'grey', borderBottomColor: 'orange', borderBottomWidth: 5, display: 'flex' }}>
+                        <Text style={{ fontSize: 25, fontWeight: 'bold' }}>Confirmed Case    ~{"     "}</Text>
+                        <AnimateNumber initial={0} value={Object.values(cases)[2]} timing="easeIn" style={{ fontSize: 25, fontWeight: 'bold', marginBottom: 5 }} />
 
 
                     </CardItem>
-                    <CardItem style={{ backgroundColor: 'lightblue', borderBottomColor: 'black', borderBottomWidth: 5 }}>
-                        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Recovered Case</Text>
-                        <Text style={{ marginLeft: 130, fontSize: 20, fontWeight: 'bold' }}>{Object.values(cases)[1]}</Text>
+                    <CardItem style={{ height: 80, backgroundColor: 'lightblue', borderBottomColor: 'black', borderBottomWidth: 5, display: 'flex' }}>
+                        <Text style={{ fontSize: 25, fontWeight: 'bold' }}>Recovered Case    ~{"     "}</Text>
+                        <AnimateNumber initial={0} value={Object.values(cases)[1]} timing="easeIn" style={{ fontSize: 25, fontWeight: 'bold', marginBottom: 5 }} />
 
 
                     </CardItem>
@@ -64,8 +67,9 @@ const Home = () => {
 
 
                 </Card>
+                <CountryPicker handleCountryChange={handleCountriesChange} country={country} />
             </Content>
-            <CountryPicker handleCountryChange={handleCountriesChange} country={country} />
+
         </Container>
     );
 };
