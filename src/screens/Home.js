@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable semi */
 /* eslint-disable quotes */
 /* eslint-disable no-undef */
@@ -10,7 +12,9 @@ import React, { useEffect, useState } from 'react';
 import { GlobalData } from '../Components/FetchData';
 import { Content, Card, CardItem, Text, Body, View, Container } from "native-base";
 import StyleSheet from 'react-native';
+import CountryPicker from '../Components/CountryPicker';
 const Home = () => {
+    const [country, setCountry] = useState('');
     const [cases, setCases] = useState({});
     useEffect(() => {
         async function getData() {
@@ -22,7 +26,15 @@ const Home = () => {
 
     }, []);
 
-    console.log(cases)
+    async function handleCountriesChange(country) {
+        let data = await GlobalData(country);
+        setCases(data);
+        setCountry(country);
+        console.log(country)
+
+
+    }
+    // console.log(cases)
     return (
         <Container>
 
@@ -30,19 +42,19 @@ const Home = () => {
                 <Card>
 
 
-                    <CardItem style={{backgroundColor:'pink',borderBottomColor:'red',borderBottomWidth:5}}>
+                    <CardItem style={{ backgroundColor: 'pink', borderBottomColor: 'red', borderBottomWidth: 5 }}>
                         <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Total Deaths</Text>
-                        <Text style={{ marginLeft: 185, fontSize: 20, fontWeight: 'bold' ,marginBottom:5 }}>{Object.values(cases)[0]}</Text>
+                        <Text style={{ marginLeft: 185, fontSize: 20, fontWeight: 'bold', marginBottom: 5 }}>{Object.values(cases)[0]}</Text>
 
 
                     </CardItem>
-                    <CardItem style={{backgroundColor:'grey',borderBottomColor:'orange',borderBottomWidth:5}}>
-                        <Text style={{  fontSize: 20, fontWeight: 'bold' }}>Confirmed Case</Text>
-                        <Text style={{ marginLeft: 130, fontSize: 20, fontWeight: 'bold',marginBottom:5 }}>{Object.values(cases)[2]}</Text>
+                    <CardItem style={{ backgroundColor: 'grey', borderBottomColor: 'orange', borderBottomWidth: 5 }}>
+                        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Confirmed Case</Text>
+                        <Text style={{ marginLeft: 130, fontSize: 20, fontWeight: 'bold', marginBottom: 5 }}>{Object.values(cases)[2]}</Text>
 
 
                     </CardItem>
-                    <CardItem style={{backgroundColor:'lightblue',borderBottomColor:'black',borderBottomWidth:5}}>
+                    <CardItem style={{ backgroundColor: 'lightblue', borderBottomColor: 'black', borderBottomWidth: 5 }}>
                         <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Recovered Case</Text>
                         <Text style={{ marginLeft: 130, fontSize: 20, fontWeight: 'bold' }}>{Object.values(cases)[1]}</Text>
 
@@ -53,6 +65,7 @@ const Home = () => {
 
                 </Card>
             </Content>
+            <CountryPicker handleCountryChange={handleCountriesChange} country={country} />
         </Container>
     );
 };
